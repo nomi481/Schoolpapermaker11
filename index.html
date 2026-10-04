@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Swat Islamia Paper Maker</title>
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#000000">
+<link rel="icon" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
+<script src="docx.umd.js"></script>
+<style>
+:root{color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#0b0b0b;--in:#242424;--card:#171717;--tx:#f2f2f2;--mut:#a3a3a3;--pri:#e5e7eb;--on:#111;--bd:#333;--dan:#f87171}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0b0b;--in:#242424;--card:#171717;--tx:#f2f2f2;--mut:#a3a3a3;--pri:#e5e7eb;--on:#111;--bd:#333;--dan:#f87171}}
+:root[data-theme="dark"]{--bg:#0b0b0b;--in:#242424;--card:#171717;--tx:#f2f2f2;--mut:#a3a3a3;--pri:#e5e7eb;--on:#111;--bd:#333;--dan:#f87171}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg transform='rotate(40 100 100)' opacity='.22'%3E%3Crect x='84' y='8' width='32' height='96' rx='10' fill='rgb(255,255,255)'/%3E%3Crect x='84' y='30' width='32' height='9' fill='rgb(255,255,255)'/%3E%3Crect x='88' y='104' width='24' height='26' fill='rgb(212,212,212)'/%3E%3Cpolygon points='88,130 112,130 100,176' fill='rgb(229,229,229)'/%3E%3Cline x1='100' y1='142' x2='100' y2='164' stroke='rgb(255,255,255)' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E") no-repeat fixed right 24px bottom 24px/340px,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='170' viewBox='0 0 170 170'%3E%3Cg fill='rgb(255,255,255)' opacity='.13'%3E%3Cg transform='translate(42 45) rotate(40)'%3E%3Crect x='-5' y='-35' width='10' height='44' rx='3'/%3E%3Crect x='-6' y='-36' width='12' height='5' rx='2'/%3E%3Cpolygon points='-5,9 5,9 0,33'/%3E%3C/g%3E%3Cg transform='translate(127 128) rotate(-38) scale(.8)'%3E%3Crect x='-5' y='-35' width='10' height='44' rx='3'/%3E%3Crect x='-6' y='-36' width='12' height='5' rx='2'/%3E%3Cpolygon points='-5,9 5,9 0,33'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat 0 0/170px,var(--bg);color:var(--tx);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:#000;color:#fff;border-bottom:3px solid #525252;padding:12px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;align-items:center}header b{font-size:17px}header span{opacity:.85;font-size:13px}
+nav{display:flex;gap:4px;padding:8px 20px 0;border-bottom:1px solid #2a2a2a}nav button{border:0;background:none;color:var(--mut);padding:9px 14px;font:inherit;font-weight:600;cursor:pointer;border-bottom:3px solid transparent}nav button.on{color:var(--pri);border-color:var(--pri)}
+main{padding:16px 20px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:8px}
+label{display:block;font-size:12px;font-weight:600;color:var(--mut);margin-bottom:3px}
+input,select,textarea{width:100%;padding:8px 9px;border:1px solid var(--bd);border-radius:8px;background:var(--in);color:var(--tx);font:inherit}
+textarea{min-height:62px;resize:vertical}input:focus,select:focus,textarea:focus{outline:2px solid var(--pri);outline-offset:-1px}
+.btn{display:inline-flex;gap:5px;align-items:center;padding:8px 12px;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit;font-weight:600;cursor:pointer}
+.btn.p{background:var(--pri);color:var(--on);border-color:var(--pri)}.btn.d{color:var(--dan)}.btn.s{padding:4px 8px;font-size:13px}.btn:disabled{opacity:.35;cursor:default}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
+.split{display:grid;grid-template-columns:minmax(0,1fr) 500px;gap:16px;align-items:start}
+.pvw{position:sticky;top:8px;max-height:calc(100vh - 16px);overflow:auto;background:#262626;padding:10px;border-radius:12px}
+.qh{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px}.tag{background:var(--pri);color:var(--on);padding:2px 9px;border-radius:99px;font-size:12px}
+.it{border-top:1px dashed var(--bd);padding-top:8px;margin-top:8px}.opts{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}.opts div{display:flex;gap:5px;align-items:center}
+.sheet{background:#fff;color:#000;width:210mm;min-height:297mm;font-family:"Times New Roman",Times,serif;zoom:.58}
+.sheet .sc{text-align:center;font-weight:700;font-size:1.45em}.sheet .ad{border-bottom:1px solid #000;padding-bottom:5px;margin-bottom:6px;text-align:center}
+.sheet .pn{text-align:center;font-weight:700;font-size:1.2em;border-bottom:2px solid #000;padding:6px 0;margin-bottom:8px}
+.sheet table.in{width:100%;border-collapse:collapse;margin-bottom:12px}.sheet .in td{border:1px solid #000;padding:4px 8px}
+.sheet .sh{display:flex;justify-content:space-between;background:#e5e7eb;padding:3px 8px;font-weight:700;margin-top:10px;break-after:avoid}.sheet .si{font-style:italic;margin:3px 0 6px;break-after:avoid}
+.sheet .q{break-inside:avoid;display:flex;gap:6px}.sheet .q>b{min-width:2em}.sheet .q>div{flex:1}.sheet .o{display:grid;gap:2px 20px;margin-top:3px}.sheet .ln{height:1.7em}.sheet .ky{columns:4;margin-bottom:6px}
+.warn{color:var(--dan);font-size:13px}
+.toast{position:fixed;bottom:calc(18px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:10px 16px;border-radius:8px;z-index:9;max-width:90%}
+.empty{color:var(--mut);text-align:center;padding:26px}
+@media (max-width:1150px){.split{grid-template-columns:1fr}.pvw{position:static;max-height:none}}
+@media (max-width:700px){body{background-size:190px,170px,auto}main,nav,header{padding-left:10px;padding-right:10px}.opts{grid-template-columns:1fr}}
+</style></head><body>
+<header><b>🏫 SWAT ISLAMIA EDUCATIONAL COMPLEX</b><span>Smart Paper Builder · Saidu Sharif, Swat</span></header>
+<nav><button id="n1" onclick="tab('b')">🧩 Builder</button><button id="n2" onclick="tab('q')">⭐ Question Bank</button><button id="n3" onclick="tab('s')">📂 Saved Papers</button></nav>
+<main id="main"></main><div id="toast" class="toast" style="display:none"></div><style id="ps"></style>
+<script>
+const $=s=>document.querySelector(s),E=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const CLASSES=['Playgroup','Nursery','Prep','1st Class','2nd Class','3rd Class','4th Class','5th Class','6th Class','7th Class','8th Class','9th Class','10th Class'];
+const SUBJ=['English','Urdu','Mathematics','Science','Computer','Islamiat','Social Studies','Pashto','Physics','Chemistry','Biology'];
+const TYPES={mcq:{n:'MCQs',l:'Multiple Choice Questions',i:'Choose the correct option.',e:1,sp:'None'},short:{n:'Short Questions',l:'Short Questions',i:'Answer the following short questions.',e:2,sp:'None'},long:{n:'Long Questions',l:'Long Questions',i:'Answer the following questions in detail.',e:5,sp:'None'},blank:{n:'Fill in the Blanks',l:'Fill in the Blanks',i:'Fill in the blanks with suitable words.',e:1,sp:'None'},tf:{n:'True / False',l:'True or False',i:'Write True or False against each statement.',e:1,sp:'None'}};
+const mem={},store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return mem[k]??d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){mem[k]=v}}};
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,5),deep=o=>JSON.parse(JSON.stringify(o));
+const item=t=>({q:'',o:['','','',''],a:''}),LET='ABCDEFGH';
+function sec(type,idx){const T=TYPES[type];return{type,title:`Section ${LET[idx]||''} – ${T.l}`,instr:T.i,each:T.e,attempt:'',space:T.sp,items:[item()]}}
+function newPaper(){return{id:uid(),name:'',cls:'',subject:'',date:'',time:'',marks:'',set:'none',created:Date.now(),sections:[sec('mcq',0),sec('short',1),sec('long',2)],st:{school:'SWAT ISLAMIA EDUCATIONAL COMPLEX',address:'Saidu Sharif, Swat',fs:12,gap:1,margin:2,hdr:true,pg:true,cols:'auto'}}}
+let P=newPaper(),papers=store.get('pm_papers',[]),bank=store.get('pm_bank',[]),view='b',mode='paper',bf={cls:'',subject:'',type:'',q:''};
+function toast(m){const t=$('#toast');t.textContent=m;t.style.display='block';clearTimeout(toast.h);toast.h=setTimeout(()=>t.style.display='none',3200)}
+const fd=d=>d?d.split('-').reverse().join('/'):'';
+function tab(v){view=v;['b','q','s'].forEach((x,i)=>$('#n'+(i+1)).className=x===v?'on':'');({b:rB,q:rQ,s:rS})[v]();window.scrollTo(0,0)}
+/* ---------- paper sets (shuffle) + checks ---------- */
+const rng=a=>()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296},
+ shuf=(arr,r)=>{for(let i=arr.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]}};
+function setView(){if(!['B','C','D'].includes(P.set))return P;const c=deep(P),r=rng(P.set.charCodeAt(0)*7919+13);
+ c.sections.forEach(s=>{shuf(s.items,r);if(s.type==='mcq')s.items.forEach(x=>{const o=[0,1,2,3];shuf(o,r);const k=x.a?'ABCD'.indexOf(x.a):-1;x.o=o.map(i=>x.o[i]);x.a=k>=0?'ABCD'[o.indexOf(k)]:''})});return c}
+const using=fn=>{const o=P;P=setView();try{return fn()}finally{P=o}},setL=()=>P.set&&P.set!=='none'?' — Set '+P.set:'';
+function sumH(){const m=model(),w=[];P.sections.forEach(s=>{const it=s.items.filter(x=>x.q.trim());
+ if(s.type==='mcq'){const na=it.filter(x=>!x.a).length,eo=it.filter(x=>x.o.some(o=>!o.trim())).length;if(na)w.push(`${na} MCQ(s) in “${s.title}” have no correct answer`);if(eo)w.push(`${eo} MCQ(s) in “${s.title}” have an empty option`)}
+ else if(s.type==='tf'||s.type==='blank'){const na=it.filter(x=>!x.a.trim()).length;if(na)w.push(`${na} question(s) in “${s.title}” have no answer for the key`)}
+ if(+s.attempt>it.length&&it.length)w.push(`“${s.title}”: “Attempt any ${s.attempt}” is more than the ${it.length} questions added`)});
+ if(!P.cls)w.push('Class is not selected');if(!P.subject.trim())w.push('Subject is empty');
+ const q=m.bl.filter(b=>b.k==='q').length;
+ return`<b>📊 ${q} questions · ${m.tot} total marks</b><div style="color:var(--mut);font-size:13px;margin:3px 0">${m.bl.filter(b=>b.k==='s').map(b=>E(b.t.replace(/ – .*/,''))+': '+E(b.m||'—')).join(' &nbsp;|&nbsp; ')||'Add questions to see the marks breakdown'}</div>${w.length?`<div class="warn">⚠️ ${w.map(E).join('<br>⚠️ ')}</div>`:'<div style="color:#4ade80;font-size:13px">✔ Paper looks complete</div>'}`}
+/* ---------- model shared by preview + Word ---------- */
+function model(){let tot=0,bl=[],key=[];
+ P.sections.forEach(s=>{const it=s.items.filter(x=>x.q.trim());if(!it.length)return;const cnt=Math.min(+s.attempt||it.length,it.length),mk=cnt*(+s.each||0);tot+=mk;
+  bl.push({k:'s',t:s.title,i:s.instr+(+s.attempt&&+s.attempt<it.length?` Attempt any ${s.attempt} questions.`:''),m:(+s.each?`${cnt} × ${s.each} = ${mk}`:'')});
+  const ks=[];it.forEach((x,n)=>{bl.push({k:'q',n:n+1,x,t:s.type,sp:s.space});if(['mcq','tf','blank'].includes(s.type))ks.push({n:n+1,a:x.a})});if(ks.length)key.push({t:s.title,ks})});
+ return{tot:P.marks.trim()||String(tot),bl,key}}
+const cols=x=>P.st.cols==='1 column'?1:P.st.cols==='2 columns'?2:(x.o.every(o=>o.length<=24)?2:1),SPN={None:0,Small:2,Medium:4,Large:8};
+function sheet(isKey){const m=model(),s=P.st;let h=(s.hdr?`<div class="sc">${E(s.school)}</div><div class="ad">${E(s.address)}</div>`:'')+`${isKey?`<div class="pn">ANSWER KEY${E(setL())}</div>`:'<div style="height:6px"></div>'}
+ <table class="in"><tr><td><b>Class:</b> ${E(P.cls)}${P.set&&P.set!=='none'?' &nbsp;&nbsp;&nbsp; <b>Set:</b> '+P.set:''}</td><td><b>Subject:</b> ${E(P.subject)}</td></tr><tr><td><b>Time:</b> ${E(P.time)}</td><td><b>Total Marks:</b> ${E(m.tot)}</td></tr>${isKey?'':'<tr><td><b>Student Name:</b> ____________________</td><td><b>Roll No:</b> __________</td></tr>'}</table>`;
+ if(isKey)return h+m.key.map(g=>`<div class="sh"><span>${E(g.t)}</span></div><div class="ky">${g.ks.map(k=>`<div><b>${k.n}.</b> ${E(k.a)||'—'}</div>`).join('')}</div>`).join('');
+ m.bl.forEach(b=>{if(b.k==='s'){h+=`<div class="sh"><span>${E(b.t)}</span><span>${E(b.m)}</span></div><div class="si">${E(b.i)}</div>`;return}
+  const x=b.x;h+=`<div class="q" style="margin-bottom:${s.gap*s.fs}pt"><b>${b.n}.</b><div><div dir="auto" style="white-space:pre-wrap">${E(x.q)}${b.t==='tf'?' &nbsp; (True / False)':''}</div>`;
+  if(b.t==='mcq')h+=`<div class="o" style="grid-template-columns:repeat(${cols(x)},1fr)">${[0,1,2,3].map(j=>`<div dir="auto">${'ABCD'[j]}. ${E(x.o[j])}</div>`).join('')}</div>`;
+  else if(['short','long'].includes(b.t))h+='<div class="ln"></div>'.repeat(SPN[b.sp]||0);h+='</div></div>'});
+ return h}
+let pt;function pv(){clearTimeout(pt);pt=setTimeout(()=>{const e=$('#sheet');if(e){e.innerHTML=using(()=>sheet(mode==='key'));const sm=$('#sum');if(sm)sm.innerHTML=sumH();e.style.fontSize=P.st.fs+'pt';e.style.padding=P.st.margin+'cm'}},120)}
+/* ---------- builder ---------- */
+const SET=(k,v)=>{P[k]=v;pv()},ST=(k,v)=>{P.st[k]=v;pv()},IT=(a,b)=>P.sections[a].items[b];
+function rB(){const o=(a,v)=>a.map(x=>`<option ${v===x?'selected':''}>${x}</option>`).join(''),st=P.st;
+ $('#main').innerHTML=`<div class="bar"><button class="btn" onclick="P=newPaper();mode='paper';rB()">📄 New Paper</button><button class="btn p" onclick="savePaper()">💾 Save Paper</button>
+ <button class="btn" onclick="exp(false)">📘 Export to MS Word</button><button class="btn" onclick="doPrint()">🖨 Print</button>
+ <button class="btn" onclick="mode=mode==='key'?'paper':'key';pv();$('#kb').textContent=mode==='key'?'📄 Show Paper':'🔑 Show Answer Key'" id="kb">🔑 Show Answer Key</button><button class="btn" onclick="exp(true)">📘 Answer Key (.docx)</button>
+ <label style="display:flex;gap:5px;align-items:center;margin:0;font-weight:600"><input type="checkbox" id="inck" style="width:auto"> Include key page in Word file</label></div>
+ <div class="split"><div><div class="card"><div class="grid">
+ <div><label>Class</label><select onchange="SET('cls',this.value)"><option value="">Select…</option>${o(CLASSES,P.cls)}</select></div>
+ <div><label>Subject</label><input list="sl" value="${E(P.subject)}" oninput="SET('subject',this.value)"><datalist id="sl">${SUBJ.map(s=>`<option>${s}`).join('')}</datalist></div>
+ <div style="grid-column:span 2"><label>Paper Name (for saving only – not printed)</label><input value="${E(P.name)}" placeholder="e.g. Science Mid Term Examination" oninput="SET('name',this.value)"></div>
+  <div><label>Time</label><input value="${E(P.time)}" placeholder="e.g. 2 Hours" oninput="SET('time',this.value)"></div>
+ <div><label>Total Marks (blank = auto)</label><input value="${E(P.marks)}" placeholder="auto" oninput="SET('marks',this.value)"></div>
+ <div><label>Paper Set</label><select onchange="SET('set',this.value)">${[['none','Single set'],['A','Set A (original order)'],['B','Set B (shuffled)'],['C','Set C (shuffled)'],['D','Set D (shuffled)']].map(x=>`<option value="${x[0]}" ${(P.set||'none')===x[0]?'selected':''}>${x[1]}</option>`).join('')}</select></div></div>
+ <details><summary style="cursor:pointer;font-weight:600">Paper Settings</summary><div class="grid" style="margin-top:10px">
+ <div><label>School name</label><input value="${E(st.school)}" oninput="ST('school',this.value)"></div><div><label>Address</label><input value="${E(st.address)}" oninput="ST('address',this.value)"></div>
+ <div><label>Font size (pt)</label><input type="number" min="8" max="20" value="${st.fs}" oninput="ST('fs',+this.value||12)"></div><div><label>Gap between questions (lines)</label><input type="number" min="0" max="3" step="0.25" value="${st.gap}" oninput="ST('gap',+this.value||0)"></div>
+ <div><label>Margins (cm)</label><input type="number" min="1" max="4" step="0.5" value="${st.margin}" oninput="ST('margin',+this.value||2)"></div>
+ <div><label>School header</label><select onchange="ST('hdr',this.value==='Show')"><option ${st.hdr?'selected':''}>Show</option><option ${!st.hdr?'selected':''}>Hide</option></select></div>
+ <div><label>Page numbers</label><select onchange="ST('pg',this.value==='Show')"><option ${st.pg?'selected':''}>Show</option><option ${!st.pg?'selected':''}>Hide</option></select></div>
+ <div><label>MCQ options</label><select onchange="ST('cols',this.value)">${o(['auto','1 column','2 columns'],st.cols)}</select></div></div></details></div>
+ <div class="card" id="sum"></div><div id="secs">${P.sections.map(secH).join('')}</div>
+ <div class="card"><label>Add a new section</label><div class="bar" style="margin:0">${Object.keys(TYPES).map(t=>`<button class="btn s" onclick="addS('${t}')">➕ ${TYPES[t].n}</button>`).join('')}</div></div></div>
+ <div class="pvw"><div class="sheet" id="sheet"></div></div></div>`;mode='paper';pv();setTimeout(()=>{const e=$('#sheet');e.innerHTML=using(()=>sheet(false));e.style.fontSize=st.fs+'pt';e.style.padding=st.margin+'cm'},0)}
+function secH(s,si){const n=P.sections.length,sp=['short','long'].includes(s.type);
+ return`<div class="card"><div class="qh"><span class="tag">${TYPES[s.type].n}</span><span><button class="btn s" ${si?'':'disabled'} onclick="mvS(${si},-1)">⬆</button> <button class="btn s" ${si<n-1?'':'disabled'} onclick="mvS(${si},1)">⬇</button> <button class="btn s d" onclick="delS(${si})">🗑 Delete Section</button></span></div>
+ <div class="grid"><div style="grid-column:1/-1"><label>Section heading</label><input value="${E(s.title)}" oninput="P.sections[${si}].title=this.value;pv()"></div>
+ <div style="grid-column:1/-1"><label>Instruction</label><input value="${E(s.instr)}" oninput="P.sections[${si}].instr=this.value;pv()"></div>
+ <div><label>Marks each</label><input type="number" min="0" step="0.5" value="${s.each}" oninput="P.sections[${si}].each=this.value;pv()"></div>
+ <div><label>Attempt any (optional)</label><input type="number" min="0" value="${E(s.attempt)}" oninput="P.sections[${si}].attempt=this.value;pv()"></div>
+ ${sp?`<div><label>Blank answer space</label><select onchange="P.sections[${si}].space=this.value;pv()">${['None','Small','Medium','Large'].map(v=>`<option ${s.space===v?'selected':''}>${v}</option>`).join('')}</select></div>`:''}</div>
+ ${s.items.map((x,i)=>itH(s,si,x,i)).join('')}<div class="bar" style="margin:10px 0 0"><button class="btn s p" onclick="addI(${si})">➕ Add Question</button></div>
+ <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">📥 Bulk paste questions</summary><div style="margin-top:6px"><textarea id="bp${si}" rows="6" dir="auto" placeholder="${s.type==='mcq'?'1. What is the brain of the computer?&#10;A. Monitor&#10;B. CPU&#10;C. Keyboard&#10;D. Mouse&#10;Answer: B&#10;&#10;2. Next question…':'One question per line (numbers are removed automatically)'}"></textarea><button class="btn s p" style="margin-top:6px" onclick="bulk(${si})">Add pasted questions</button></div></details></div>`}
+function itH(s,si,x,i){const L=s.items.length,t=s.type;
+ return`<div class="it"><div class="qh"><b>${i+1}.</b><span><button class="btn s" title="Save to Question Bank" onclick="toBank(${si},${i})">⭐ Bank</button> <button class="btn s" ${i?'':'disabled'} onclick="mvI(${si},${i},-1)">⬆</button> <button class="btn s" ${i<L-1?'':'disabled'} onclick="mvI(${si},${i},1)">⬇</button> <button class="btn s d" onclick="delI(${si},${i})">🗑</button></span></div>
+ <textarea dir="auto" placeholder="${t==='blank'?'Type the sentence using ______ for the blank':'Write the question here…'}" oninput="IT(${si},${i}).q=this.value;pv()">${E(x.q)}</textarea>
+ ${t==='mcq'?`<div class="opts">${[0,1,2,3].map(j=>`<div><b>${'ABCD'[j]}.</b><input dir="auto" placeholder="Option ${'ABCD'[j]}" value="${E(x.o[j])}" oninput="IT(${si},${i}).o[${j}]=this.value;pv()"></div>`).join('')}</div><div style="max-width:230px;margin-top:6px"><label>Correct answer (key only)</label><select onchange="IT(${si},${i}).a=this.value">${['','A','B','C','D'].map(v=>`<option ${x.a===v?'selected':''}>${v}</option>`).join('')}</select></div>`:''}
+ ${t==='tf'?`<div style="max-width:230px;margin-top:6px"><label>Correct answer (key only)</label><select onchange="IT(${si},${i}).a=this.value">${['','True','False'].map(v=>`<option ${x.a===v?'selected':''}>${v}</option>`).join('')}</select></div>`:''}
+ ${t==='blank'?`<div style="max-width:300px;margin-top:6px"><label>Answer (key only)</label><input value="${E(x.a)}" oninput="IT(${si},${i}).a=this.value"></div>`:''}</div>`}
+const refreshS=()=>{$('#secs').innerHTML=P.sections.map(secH).join('');pv()};
+function parseBulk(t,txt){const L=txt.split('\n').map(s=>s.trim()).filter(Boolean),out=[];
+ if(t!=='mcq')return L.map(l=>({q:l.replace(/^(?:Q\.?\s*)?\d+\s*[\.\)\-:]\s*/i,''),o:['','','',''],a:''})).filter(x=>x.q);
+ let c=null;const push=()=>{if(c&&c.q)out.push(c);c=null};
+ L.forEach(l=>{let m;
+  if(m=l.match(/^(?:ans(?:wer)?|correct(?: answer)?)\s*[:\-]?\s*\(?([A-Da-d])/i)){if(c)c.a=m[1].toUpperCase();return}
+  if(m=l.match(/^\(?([A-Da-d])[\.\)\:]\s*(.*)/)){if(!c)c=item();c.o['ABCD'.indexOf(m[1].toUpperCase())]=m[2];return}
+  if(m=l.match(/^(?:Q\.?\s*)?\d+\s*[\.\)\-:]\s*(.*)/)){push();c=item();c.q=m[1];return}
+  if(c&&c.q&&c.o.every(o=>!o)){c.q+=' '+l;return}
+  push();c=item();c.q=l});push();return out}
+function bulk(si){const e=$('#bp'+si),s=P.sections[si],a=parseBulk(s.type,e.value);if(!a.length)return toast('Nothing to add – paste your questions first');
+ if(s.items.length===1&&!s.items[0].q.trim())s.items=a;else s.items.push(...a);refreshS();toast(a.length+' questions added ✔')}
+function addS(t){P.sections.push(sec(t,P.sections.length));refreshS()}
+function delS(i){P.sections.splice(i,1);refreshS()}
+function mvS(i,d){[P.sections[i],P.sections[i+d]]=[P.sections[i+d],P.sections[i]];refreshS()}
+function addI(si){P.sections[si].items.push(item());refreshS();const t=document.querySelectorAll('#secs .card')[si].querySelectorAll('textarea');t[t.length-1].focus()}
+function delI(si,i){const a=P.sections[si].items;a.length===1?a[0]=item():a.splice(i,1);refreshS()}
+function mvI(si,i,d){const a=P.sections[si].items;[a[i],a[i+d]]=[a[i+d],a[i]];refreshS()}
+/* ---------- bank ---------- */
+function toBank(si,i){const s=P.sections[si],x=s.items[i];if(!x.q.trim())return toast('Write the question first');
+ bank.unshift({id:uid(),type:s.type,cls:P.cls,subject:P.subject,q:x.q,o:[...x.o],a:x.a});store.set('pm_bank',bank);toast('Saved to Question Bank ⭐')}
+function rQ(){const f=bf,list=bank.filter(b=>(!f.cls||b.cls===f.cls)&&(!f.subject||b.subject.toLowerCase()===f.subject.toLowerCase())&&(!f.type||b.type===f.type)&&(!f.q||b.q.toLowerCase().includes(f.q.toLowerCase())));
+ const subs=[...new Set(bank.map(b=>b.subject).filter(Boolean))];
+ $('#main').innerHTML=`<div class="card"><div class="grid" style="margin:0"><div><label>Class</label><select onchange="bf.cls=this.value;rQ()"><option value="">All</option>${CLASSES.map(c=>`<option ${f.cls===c?'selected':''}>${c}</option>`).join('')}</select></div>
+ <div><label>Subject</label><select onchange="bf.subject=this.value;rQ()"><option value="">All</option>${subs.map(c=>`<option ${f.subject===c?'selected':''}>${E(c)}</option>`).join('')}</select></div>
+ <div><label>Type</label><select onchange="bf.type=this.value;rQ()"><option value="">All</option>${Object.keys(TYPES).map(t=>`<option value="${t}" ${f.type===t?'selected':''}>${TYPES[t].n}</option>`).join('')}</select></div>
+ <div><label>Search</label><input value="${E(f.q)}" oninput="bf.q=this.value;clearTimeout(rQ.h);rQ.h=setTimeout(()=>{rQ();$('#bs').focus()},300)" id="bs"></div></div></div>`+
+ (list.length?list.map(b=>`<div class="card"><div class="qh"><span><span class="tag">${TYPES[b.type].n}</span> <small style="color:var(--mut)">${E(b.cls)} ${E(b.subject)}</small></span><span><button class="btn s p" onclick="fromBank('${b.id}')">➕ Add to current paper</button> <button class="btn s d" onclick="delB(this,'${b.id}')">Delete</button></span></div><div dir="auto" style="white-space:pre-wrap">${E(b.q)}</div>${b.type==='mcq'?`<small style="color:var(--mut)">${b.o.map((o,j)=>'ABCD'[j]+'. '+E(o)).join(' &nbsp; ')} ${b.a?'· Answer: '+b.a:''}</small>`:''}</div>`).join(''):'<div class="card empty">No questions in the bank yet. Click “⭐ Bank” on any question in the Builder to keep it for later papers.</div>')}
+function fromBank(id){const b=bank.find(x=>x.id===id);let s=P.sections.find(x=>x.type===b.type);if(!s){s=sec(b.type,P.sections.length);P.sections.push(s)}
+ const e=s.items.length===1&&!s.items[0].q.trim();const n={q:b.q,o:[...b.o],a:b.a};e?s.items[0]=n:s.items.push(n);toast('Added to “'+s.title+'”')}
+function delB(b,id){if(!b.dataset.a){b.dataset.a=1;b.textContent='Confirm?';setTimeout(()=>{b.dataset.a='';b.textContent='Delete'},3000);return}bank=bank.filter(x=>x.id!==id);store.set('pm_bank',bank);rQ()}
+/* ---------- saved ---------- */
+function savePaper(){if(!P.name.trim())return toast('Please enter a Paper Name before saving');const c=deep(P),k=papers.findIndex(x=>x.id===c.id);k>=0?papers[k]=c:papers.unshift(c);store.set('pm_papers',papers);toast('Paper saved ✔')}
+function rS(){$('#main').innerHTML=papers.length?papers.map(p=>`<div class="card qh"><div><b>${E(p.name)}</b><div style="color:var(--mut);font-size:13px">${E(p.cls||'—')} · ${E(p.subject||'—')} · ${p.sections.length} sections · ${p.sections.reduce((a,s)=>a+s.items.filter(x=>x.q.trim()).length,0)} questions · ${new Date(p.created).toLocaleDateString('en-GB')}</div></div>
+ <div><button class="btn s p" onclick="openP('${p.id}')">Open / Edit</button> <button class="btn s" onclick="dupP('${p.id}')">Duplicate</button> <button class="btn s d" onclick="delP(this,'${p.id}')">Delete</button></div></div>`).join(''):'<div class="card empty">No saved papers yet.</div>'}
+function openP(id){P=deep(papers.find(p=>p.id===id));tab('b')}
+function dupP(id){const c=deep(papers.find(p=>p.id===id));c.id=uid();c.name+=' (Copy)';c.created=Date.now();papers.unshift(c);store.set('pm_papers',papers);rS();toast('Duplicated')}
+function delP(b,id){if(!b.dataset.a){b.dataset.a=1;b.textContent='Click again to confirm';setTimeout(()=>{b.dataset.a='';b.textContent='Delete'},3000);return}papers=papers.filter(p=>p.id!==id);store.set('pm_papers',papers);rS()}
+/* ---------- print ---------- */
+function doPrint(){mode='paper';$('#sheet').innerHTML=using(()=>sheet(false));$('#ps').textContent=`@media print{@page{size:A4;margin:${P.st.margin}cm${P.st.pg?';@bottom-center{content:"Page " counter(page) " of " counter(pages);font-size:10pt}':''}}body *{visibility:hidden}.pvw,.pvw *{visibility:visible}.pvw{position:absolute;left:0;top:0;width:100%;max-height:none;overflow:visible;background:none;padding:0}.sheet{zoom:1!important;width:auto!important;padding:0!important}}`;
+ try{setTimeout(()=>window.print(),150)}catch(e){toast('Printing is blocked here – export to Word and print from there.')}}
+/* ---------- Word export ---------- */
+async function exp(keyOnly){const m=model();if(!m.bl.length)return toast('Add at least one question first');if(keyOnly&&!m.key.length)return toast('Answer key needs MCQ, True/False or Fill-in-the-blank questions');
+ if(typeof docx==='undefined')return toast('Word library failed to load – check your internet connection');
+ try{const blob=await docx.Packer.toBlob(using(()=>build(model(),keyOnly,!!$('#inck')?.checked))),fn=((P.name||P.subject||'Paper')+' '+P.cls+(P.set&&P.set!=='none'?' Set '+P.set:'')+(keyOnly?' Answer Key':'')).replace(/[^\w\- ]+/g,'').trim().replace(/\s+/g,'_')+'.docx';
+  let d=null;try{d=await claude.use('downloads')}catch(e){}
+  if(d){try{await d.save({filename:fn,data:blob});toast('Word file ready ✔')}catch(e){if(e.code!=='declined')toast('Could not save: '+(e.message||e.code))}}
+  else{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=fn;a.click();toast('Word file downloaded ✔')}}catch(e){toast('Export failed: '+e.message)}}
+function build(m,keyOnly,withKey){const D=docx,s=P.st,F='Times New Roman',FS=Math.round(s.fs*2),cm=n=>Math.round(n*567),cw=11906-2*cm(s.margin),rtl=t=>/[\u0600-\u06FF]/.test(t),LB=D.BorderStyle,
+ NB={style:LB.NONE,size:0,color:'FFFFFF'},NBs={top:NB,bottom:NB,left:NB,right:NB,insideHorizontal:NB,insideVertical:NB},bd={style:LB.SINGLE,size:6,color:'000000'},gap=Math.round(s.gap*s.fs*20);
+ const R=(t,o={})=>new D.TextRun({text:t,font:F,size:o.size||FS,bold:o.bold,italics:o.it,break:o.br,rightToLeft:rtl(t)}),tx=(t,o)=>t.split('\n').map((l,i)=>R(l,{...o,br:i?1:0})),pa=(c,o={})=>new D.Paragraph({children:c,...o}),
+ ctr=(t,z,b,o={})=>pa([R(t,{size:z,bold:b})],{alignment:D.AlignmentType.CENTER,...o}),cell=(c,w,sp)=>new D.TableCell({children:c,width:{size:w,type:D.WidthType.DXA},columnSpan:sp,margins:{top:60,bottom:60,left:100,right:100}}),lab=(a,b)=>pa([R(a,{bold:true}),R(b||'')]);
+ function head(key){const c=[];
+  if(key)c.push(ctr('ANSWER KEY'+setL(),28,true,{spacing:{before:60,after:120},border:{bottom:{style:LB.SINGLE,size:12,color:'000000',space:4}}}));
+  const h=cw/2|0,rows=[[cell([lab('Class: ',P.cls+(P.set&&P.set!=='none'?'        Set: '+P.set:''))],h),cell([lab('Subject: ',P.subject)],h)],[cell([lab('Time: ',P.time)],h),cell([lab('Total Marks: ',m.tot)],h)]];
+  if(!key)rows.push([cell([lab('Student Name: ','____________________')],h),cell([lab('Roll No: ','__________')],h)]);
+  c.push(new D.Table({width:{size:cw,type:D.WidthType.DXA},columnWidths:[h,cw-h],borders:{top:bd,bottom:bd,left:bd,right:bd,insideHorizontal:bd,insideVertical:bd},rows:rows.map(r=>new D.TableRow({children:r,cantSplit:true}))}),pa([R('',{size:8})],{spacing:{after:60}}));return c}
+ function body(){const c=[];m.bl.forEach(b=>{
+  if(b.k==='s'){c.push(pa([R(b.t,{bold:true}),R('\t'+b.m,{bold:true})],{keepNext:true,spacing:{before:200,after:40},tabStops:[{type:D.TabStopType.RIGHT,position:cw}],shading:{type:D.ShadingType.CLEAR,fill:'E5E7EB',color:'auto'}}),pa([R(b.i,{it:true})],{keepNext:true,spacing:{after:100}}));return}
+  const x=b.x,mc=b.t==='mcq',n=['short','long'].includes(b.t)?SPN[b.sp]||0:0,ind={left:567,hanging:567},tab=[{type:D.TabStopType.LEFT,position:567}];
+  c.push(pa([R(b.n+'.\t',{bold:true}),...tx(x.q.trim()),...(b.t==='tf'?[R('\t(True / False)')]:[])],{keepNext:mc||n>0,keepLines:true,indent:ind,tabStops:b.t==='tf'?[...tab,{type:D.TabStopType.RIGHT,position:cw}]:tab,spacing:{after:mc?20:(n?0:gap)}}));
+  if(mc){const cl=cols(x),op=j=>[R('ABCD'[j]+'.\t'),...tx(x.o[j]||'')];
+   if(cl===1)[0,1,2,3].forEach(j=>c.push(pa(op(j),{indent:{left:1000,hanging:433},tabStops:[{type:D.TabStopType.LEFT,position:1000}],keepLines:true,keepNext:j<3,spacing:{after:j<3?20:gap}})));
+   else{const w=(cw-567)/2|0,pc={indent:{left:433,hanging:433},tabStops:[{type:D.TabStopType.LEFT,position:433}],spacing:{after:20}};
+    c.push(new D.Table({width:{size:cw-567,type:D.WidthType.DXA},columnWidths:[w,cw-567-w],indent:{size:567,type:D.WidthType.DXA},borders:NBs,rows:[[0,1],[2,3]].map(r=>new D.TableRow({cantSplit:true,children:r.map(j=>new D.TableCell({width:{size:w,type:D.WidthType.DXA},borders:{top:NB,bottom:NB,left:NB,right:NB},children:[pa(op(j),pc)]}))}))}),pa([R('',{size:2})],{run:{size:2},spacing:{before:0,after:gap,line:20,lineRule:D.LineRuleType.EXACT}}))}}
+  else for(let k=0;k<n;k++)c.push(pa([R('',{size:FS})],{indent:{left:567},keepNext:k<n-1,spacing:{before:k?0:80,after:k===n-1?gap:0,line:400}}))});return c}
+ function keyBody(){const c=[],w=cw/5|0;m.key.forEach(g=>{c.push(pa([R(g.t,{bold:true})],{keepNext:true,spacing:{before:160,after:60},shading:{type:D.ShadingType.CLEAR,fill:'E5E7EB',color:'auto'}}));const rows=[];
+  for(let i=0;i<g.ks.length;i+=5){const r=[];for(let j=0;j<5;j++){const k=g.ks[i+j];r.push(cell([pa(k?[R(k.n+'.  ',{bold:true}),R(k.a||'—')]:[])],j<4?w:cw-4*w))}rows.push(new D.TableRow({children:r,cantSplit:true}))}
+  c.push(new D.Table({width:{size:cw,type:D.WidthType.DXA},columnWidths:[w,w,w,w,cw-4*w],borders:NBs,rows}))});return c}
+ const props={page:{size:{width:11906,height:16838},margin:{top:cm(s.margin),bottom:cm(s.margin),left:cm(s.margin),right:cm(s.margin),footer:300,header:400}}},
+ footers=s.pg?{default:new D.Footer({children:[pa([new D.TextRun({children:['Page ',D.PageNumber.CURRENT,' of ',D.PageNumber.TOTAL_PAGES],font:F,size:20})],{alignment:D.AlignmentType.CENTER})]})}:{},secs=[],headers=s.hdr?{default:new D.Header({children:[ctr(s.school,34,true,{spacing:{after:20}}),ctr(s.address||' ',FS,false,{spacing:{after:0},border:{bottom:{style:D.BorderStyle.SINGLE,size:8,color:'000000',space:4}}})]})}:{};
+ if(!keyOnly)secs.push({properties:props,headers,footers,children:[...head(false),...body()]});if(keyOnly||withKey)secs.push({properties:props,headers,footers,children:[...head(true),...keyBody()]});
+ return new D.Document({creator:s.school,title:P.name,styles:{default:{document:{run:{font:F,size:FS}}}},sections:secs})}
+tab('b');
+</script><script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))</script></body></html>
